@@ -1,0 +1,36 @@
+application app
+
+import mobl::ui::generic
+
+type Trend {
+  name : String
+  url  : String
+}
+
+service Twitter {
+  resource trends() : [Trend] {
+    uri = "http://api.twitter.com/1/trends.json"
+    encoding = "jsonp"
+    mapper = function(json : JSON) : [Trend] { return json.trends; }
+
+  }
+
+  resource search(query : String) : JSON {
+    uri = "http://search.twitter.com/search.json?q="
+          + escape(query)
+    encoding = "jsonp"
+  }
+}
+
+screen root() {
+  header("Twitter trends")
+  var trends = Twitter.trends()
+
+  group {
+    list(topic in trends) {
+      item {
+        label(topic.name)
+      }
+    }
+  }
+}
