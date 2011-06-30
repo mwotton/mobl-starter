@@ -12,3 +12,7 @@ assumptions:
 
   you have ruby installed
   you have the 'watchr' gem installed
+
+
+You'll also need a webserver to be looking at the directory. I use pow
+<https://github.com/37signals/pow> but anything would do.
