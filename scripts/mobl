@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+java -jar /usr/local/lib/moblc.jar -I /usr/local/lib/mobl-lib $@
